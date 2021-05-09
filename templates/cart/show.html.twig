@@ -1,0 +1,29 @@
+{% extends "base_client.html.twig" %} {% block body %}
+<h1>{{ cart.title }}</h1>
+<h4>Family: {{ cart.family.name }}</h4>
+<table class="table table-striped">
+  <thead>
+    <th>Name</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Member</th>
+    <th>Ordered</th>
+    <th>Sent</th>
+  </thead>
+  <tbody>
+    {% for item in cart.wishes %}
+    <tr>
+      <td>{{ item.item.name }}</td>
+      <td>{{ item.count }}</td>
+      <td>{{ item.count * item.item.unitPrice }}</td>
+      <td>{{ item.member.name }}</td>
+      <td>{{ cart.ordered ? "Yes" : "No" }}</td>
+      <td>{{ cart.sended ? "Yes" : "No" }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<button class="btn btn-info mt-4" onclick="history.go(-1)">back</button>
+
+{% endblock %}

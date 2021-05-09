@@ -1,0 +1,38 @@
+{% extends "base_client.html.twig" %} {% block body %} {%if member%}
+<h1>{{ member.name }}</h1>
+{%endif%}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      {%if not member%}
+      <th>actions</th>
+      {%endif%}
+    </tr>
+  </thead>
+  <tbody>
+    {% for family in families %}
+    <tr>
+      <td>{{ family.id }}</td>
+      <td>{{ family.name }}</td>
+      {%if not member%}
+      <td>
+        <a
+          class="btn btn-primary"
+          href="{{ path('family_edit', { id: family.id }) }}"
+          >edit</a
+        >
+      </td>
+      {%endif%}
+    </tr>
+    {% else %}
+    <tr>
+      <td colspan="3">no records found</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{%if not member%}
+<a class="btn btn-success" href="{{ path('family_new') }}">Create new</a>
+{%endif%} {% endblock %}

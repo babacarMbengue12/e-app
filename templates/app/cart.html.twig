@@ -1,0 +1,55 @@
+{% extends 'base_client.html.twig' %} {% block body %} {%if message is defined%}
+<div class="alert alert-danger">
+  {{ message }}
+</div>
+{%endif%}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cart in carts %}
+    <tr>
+      <td>{{ cart.id }}</td>
+      <td>{{ cart.title }}</td>
+      <td>
+        <form
+          method="post"
+          action="{{
+            path('cart_add', {
+              cartId: cart.id,
+              itemId: item.id,
+              memberId: member.id
+            })
+          }}"
+        >
+          <div class="row">
+            <div class="col-3">
+              <input
+                type="number"
+                class="form-control"
+                name="quantity"
+                placeholder="quantity"
+                required
+              />
+            </div>
+            <div class="col">
+              <button class="btn btn-primary" type="submit">Add</button>
+            </div>
+          </div>
+        </form>
+      </td>
+    </tr>
+    {% else %}
+    <tr>
+      <td colspan="5">no records found</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

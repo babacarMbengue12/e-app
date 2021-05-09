@@ -1,0 +1,11 @@
+{% extends 'base_client.html.twig' %} {% block body %}
+<h1>{{ item.name }}</h1>
+<h2>{{ item.unitPrice }} €</h2>
+<h4>stock disponible: {{ item.stock }}</h4>
+<p>{{ item.description }}</p>
+
+<a href="{{ path('member_select', { id: item.id }) }}" class="btn btn-primary"
+  >commander</a
+>
+
+{% endblock %}

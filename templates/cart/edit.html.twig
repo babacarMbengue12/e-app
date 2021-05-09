@@ -1,0 +1,9 @@
+{% extends "base_client.html.twig" %} {% block body %}
+<h1>Edit Cart</h1>
+
+{{ include("cart/_form.html.twig", { button_label: "Update" }) }}
+
+<a class="btn btn-info" href="{{ path('cart_index') }}">back to list</a>
+
+{{ include("cart/_delete_form.html.twig") }}
+{% endblock %}

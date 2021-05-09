@@ -1,0 +1,9 @@
+{% extends "base_stock.html.twig" %} {% block body %}
+<h1>Edit Category</h1>
+
+{{ include("category/_form.html.twig", { button_label: "Update" }) }}
+
+<a href="{{ path('category_index') }}" class="btn btn-info">back to list</a>
+
+{{ include("category/_delete_form.html.twig") }}
+{% endblock %}

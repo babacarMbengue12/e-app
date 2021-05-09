@@ -1,0 +1,7 @@
+{% extends "base_stock.html.twig" %} {% block body %}
+<h1>Create new Category</h1>
+
+{{ include("category/_form.html.twig") }}
+
+<a class="btn btn-info" href="{{ path('category_index') }}">back to list</a>
+{% endblock %}

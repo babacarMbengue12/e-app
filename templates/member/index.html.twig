@@ -1,0 +1,52 @@
+{% extends "base_client.html.twig" %} {% block body %}
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <!-- <th>Email</th> -->
+      <th>Phone</th>
+      <th>actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for member in members %}
+    <tr>
+      <td>{{ member.id }}</td>
+      <td>{{ member.name }}</td>
+      <!-- <td>{{ member.email }}</td> -->
+      <td>{{ member.phone }}</td>
+      <td>
+        <a
+          class="btn btn-primary"
+          href="{{ path('member_family', { id: member.id }) }}"
+          >familles</a
+        >
+        <a
+          class="btn btn-primary"
+          href="{{ path('orders_member', { id: member.id }) }}"
+          >Paniers</a
+        >
+        <a
+          class="btn btn-secondary"
+          href="{{ path('orders_member_old', { id: member.id }) }}"
+          >Historiques</a
+        >
+        <a
+          class="btn btn-primary"
+          href="{{ path('member_edit', { id: member.id }) }}"
+          >edit</a
+        >
+      </td>
+    </tr>
+    {% else %}
+    <tr>
+      <td colspan="5">no records found</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<a class="btn btn-success" href="{{ path('member_new') }}">Create new</a>
+{% endblock %}

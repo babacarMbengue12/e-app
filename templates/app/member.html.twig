@@ -1,0 +1,59 @@
+{% extends 'base_client.html.twig' %} {% block body %}
+
+<table class="table table-striped">
+  <form action="">
+    <div class="row mt-3 mb-3">
+      <div class="col-4">
+        <input
+          class="form-control"
+          list="datalistOptions"
+          name="search"
+          id="exampleDataList"
+          placeholder="Phone number"
+        />
+        <datalist id="datalistOptions">
+          {% for member in members %}
+          <option value="{{ member.phone }}"></option>
+          {% endfor %}
+        </datalist>
+      </div>
+      <div class="col">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </form>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <!-- <th>Email</th> -->
+      <th>Phone</th>
+      <th>actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for member in members %}
+    <tr>
+      <td>{{ member.id }}</td>
+      <td>{{ member.name }}</td>
+      <!-- <td>{{ member.email }}</td> -->
+      <td>{{ member.phone }}</td>
+      <td>
+        <a
+          class="btn btn-primary"
+          href="{{
+            path('cart_select', { itemId: item.id, memberId: member.id })
+          }}"
+          >Select</a
+        >
+      </td>
+    </tr>
+    {% else %}
+    <tr>
+      <td colspan="5">no records found</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

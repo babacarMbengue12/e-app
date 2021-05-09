@@ -1,0 +1,32 @@
+{% extends "base_client.html.twig" %} {% block body %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Family</th>
+      <th>Ordered</th>
+      <th>Sent</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cart in carts %}
+    <tr>
+      <td>{{ cart.id }}</td>
+      <td>{{ cart.title }}</td>
+      <td>{{ cart.family.name }}</td>
+      <td>{{ cart.ordered ? "Yes" : "No" }}</td>
+      <td>{{ cart.sended ? "Yes" : "No" }}</td>
+      <td>
+        <a href="{{path("cart_show",{id: cart.id})}}" class="btn btn-primary">Details</a>
+      </td>
+    </tr>
+    {% else %}
+    <tr>
+      <td colspan="5">no records found</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

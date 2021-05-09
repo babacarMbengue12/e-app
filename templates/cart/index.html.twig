@@ -1,0 +1,48 @@
+{% extends "base_client.html.twig" %} {% block body %} {%if message is defined%}
+<div class="alert alert-danger">
+  {{ message }}
+</div>
+{%endif%}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Family</th>
+      <th>Ordered</th>
+      <th>Sent</th>
+      <th>actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cart in carts %}
+    <tr>
+      <td>{{ cart.id }}</td>
+      <td>{{ cart.title }}</td>
+      <td>{{ cart.family.name }}</td>
+      <td>{{ cart.ordered ? "Yes" : "No" }}</td>
+      <td>{{ cart.sended ? "Yes" : "No" }}</td>
+      <td>
+        <a
+          class="btn btn-primary"
+          href="{{ path('cart_ordered', { id: cart.id }) }}"
+          >Commander</a
+        >
+        <a href="{{path("cart_show",{id: cart.id})}}" class="btn btn-primary">Details</a>
+        <a
+          class="btn btn-primary"
+          href="{{ path('cart_edit', { id: cart.id }) }}"
+          >edit</a
+        >
+      </td>
+    </tr>
+    {% else %}
+    <tr>
+      <td colspan="5">no records found</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<a class="btn btn-success" href="{{ path('cart_new') }}">Create new</a>
+{% endblock %}

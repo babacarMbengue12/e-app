@@ -1,0 +1,6 @@
+{% extends "base_client.html.twig" %} {% block body %}
+
+{{ include("family/_form.html.twig") }}
+
+<a class="btn btn-info" href="{{ path('family_index') }}">back to list</a>
+{% endblock %}

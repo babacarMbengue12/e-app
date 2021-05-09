@@ -1,0 +1,7 @@
+{% extends "base_client.html.twig" %} {% block body %}
+<h1>Create new Member</h1>
+
+{{ include("member/_form.html.twig") }}
+
+<a class="btn btn-info" href="{{ path('member_index') }}">back to list</a>
+{% endblock %}

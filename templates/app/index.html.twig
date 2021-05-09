@@ -1,0 +1,7 @@
+{% extends 'base_client.html.twig' %} {% block body %}
+<h1>Categories</h1>
+<div class="row align-items-stretch">
+  {% for item in categories %}
+  {{ include("app/_category.html.twig") }} {% endfor %}
+</div>
+{% endblock %}

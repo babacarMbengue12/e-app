@@ -1,0 +1,45 @@
+{% extends 'base_client.html.twig' %} {% block body %}
+<h1>{{ category.title }}</h1>
+
+<div class="row">
+  <div class="col-md-9">
+    <div class="row">
+      {% for item in category.categoryId %}
+      {{ include("app/_category.html.twig") }}
+      {% endfor %}
+    </div>
+    <div class="mt-5">
+      <div class="row">
+        {% for item in category.items %}
+        <div class="col-sm-12 col-md-6 col-lg-4 mt-2 mb-2">
+          <div class="card" style="width: 100%; height: 100%">
+            <div class="card-body">
+              <a
+                class="card-link text-center card-title"
+                style="text-decoration: none"
+                href="{{ path('item_show', { id: item.id }) }}"
+              >
+                <h2>{{ item.name }}</h2>
+              </a>
+              <h4 class="text-center">{{ item.unitPrice }} €</h4>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <h4>categories</h4>
+    <ul class="list-group">
+      {% for item in categories %}
+      <li class="list-group-item">
+        <a href="{{ path('category_show', { id: item.id }) }}">{{
+          item.title
+        }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{%endblock %}

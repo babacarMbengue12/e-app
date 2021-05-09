@@ -1,0 +1,6 @@
+{% extends "base_client.html.twig" %} {% block body %}
+<h1>Edit Family</h1>
+{{ include("family/_form.html.twig", { button_label: "Update" }) }}
+<a class="btn btn-info" href="{{ path('family_index') }}">back to list</a>
+{{ include("family/_delete_form.html.twig") }}
+{% endblock %}
