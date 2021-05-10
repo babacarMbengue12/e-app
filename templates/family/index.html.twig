@@ -1,6 +1,9 @@
-{% extends "base_client.html.twig" %} {% block body %} {%if member%}
-<h1>{{ member.name }}</h1>
-{%endif%}
+{% extends "base_client.html.twig" %} {% block body %}
+<h1>
+  Familles {%if member%}
+  {{ member.name }}
+  {%endif%}
+</h1>
 <table class="table table-striped">
   <thead>
     <tr>

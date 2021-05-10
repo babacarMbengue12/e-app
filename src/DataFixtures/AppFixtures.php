@@ -25,20 +25,20 @@ class AppFixtures extends Fixture
             $categories[] = $category;
             $allCategories[] = $category;
         }
-        for($i = 0;$i < 20;$i++){
+        for($i = 0;$i < 10;$i++){
             $category = new Category();
             $category->setTitle($faker->name);
             $category->setCategory($categories[$faker->numberBetween(0,4)]);
             $manager->persist($category);
             $allCategories[] = $category;
         }
-        for($i  =0;$i < 30;$i++){
+        for($i  =0;$i < 15;$i++){
             $item = new Item();
             $item->setName($faker->name);
             $item->setDescription($faker->text(255));
             $item->setStock($faker->numberBetween(100,1000));
             $item->setUnitPrice($faker->numberBetween(5,10000));
-            $cats = $faker->randomElements($allCategories,10);
+            $cats = $faker->randomElements($allCategories,5);
             foreach($cats as $c){
                 $item->addCategory($c);
             }
@@ -46,29 +46,29 @@ class AppFixtures extends Fixture
         }
 
         $families = [];
-        for($i = 0;$i < 10;$i++){
+        for($i = 0;$i < 5;$i++){
             $family = new Family();
             $family->setName($faker->name);
             $manager->persist($family);
             $families[] = $family;
         }
-        for($i = 0;$i < 20;$i++){
+        for($i = 0;$i < 10;$i++){
             $member = new Member();
             $member->setName($faker->name);
             $member->setPhone($faker->phoneNumber);
             $member->setEmail($faker->email);
-            $cats = $faker->randomElements($families,5);
+            $cats = $faker->randomElements($families,3);
             foreach($cats as $c){
                 $member->addFamily($c);
             }
             $manager->persist($member);
         }
-        for($i = 0;$i < 25;$i++){
+        for($i = 0;$i < 5;$i++){
             $cart = new Cart();
             $cart->setTitle($faker->name);
             $cart->setOrdered(false);
             $cart->setSended(false);
-            $cart->setFamily($families[$faker->numberBetween(0,9)]);
+            $cart->setFamily($families[$faker->numberBetween(0,5)]);
             $manager->persist($cart);
         }
         $manager->flush();

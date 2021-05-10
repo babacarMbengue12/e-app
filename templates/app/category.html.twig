@@ -1,14 +1,16 @@
 {% extends 'base_client.html.twig' %} {% block body %}
-<h1>{{ category.title }}</h1>
+<h1>Categorie: {{ category.title }}</h1>
 
 <div class="row">
   <div class="col-md-9">
     <div class="row">
+      <h1>Sous categories:</h1>
       {% for item in category.categoryId %}
       {{ include("app/_category.html.twig") }}
       {% endfor %}
     </div>
     <div class="mt-5">
+      <h1>Items</h1>
       <div class="row">
         {% for item in category.items %}
         <div class="col-sm-12 col-md-6 col-lg-4 mt-2 mb-2">

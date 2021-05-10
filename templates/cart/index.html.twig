@@ -3,6 +3,7 @@
   {{ message }}
 </div>
 {%endif%}
+<h1>Paniers</h1>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -11,6 +12,7 @@
       <th>Family</th>
       <th>Ordered</th>
       <th>Sent</th>
+      <th>Items</th>
       <th>actions</th>
     </tr>
   </thead>
@@ -22,6 +24,7 @@
       <td>{{ cart.family.name }}</td>
       <td>{{ cart.ordered ? "Yes" : "No" }}</td>
       <td>{{ cart.sended ? "Yes" : "No" }}</td>
+      <td>{{ cart.wishes.count }}</td>
       <td>
         <a
           class="btn btn-primary"
